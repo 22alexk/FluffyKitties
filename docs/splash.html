@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: black;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        #container {
+            display: inline-block;
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+            width: 260px;
+            background-color: #222;
+            color: white;
+            border: 1px solid #555;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #444;
+            color: white;
+            border: 1px solid #666;
+        }
+        #error {
+            color: #ff5555;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+
+    <!-- Replace this URL with your GitHub image link -->
+    <img src="https://22alexk.github.io/FluffyKitties/Kitties25.png" alt="Bear Photo">
+
+    <h2>What is the bears favorite food?</h2>
+
+    <input type="text" id="answer" placeholder="Type your answer here">
+    <br>
+    <button onclick="checkAnswer()">Submit</button>
+
+    <p id="error"></p>
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const base_grant_url = urlParams.get("base_grant_url");
+const user_continue_url = urlParams.get("user_continue_url") || "https://www.cisco.com";
+
+function checkAnswer() {
+    const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+
+    if (userAnswer === "chimkin") {
+        window.location.href = base_grant_url + "?continue_url=" + encodeURIComponent(user_continue_url);
+    } else {
+        document.getElementById("error").textContent = "Incorrect. Try again!";
+    }
+}
+</script>
+
+</body>
+</html>
